@@ -65,6 +65,7 @@ function repoAddInList(repositories) {
 
 
 listFoundRepositories.addEventListener('click', (event) => {
+    input.value = ''
     listFoundRepositories.innerHTML = ''
     if(event.target.closest('.repo')){
         const clickItem = event.target
