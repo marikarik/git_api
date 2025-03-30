@@ -11,7 +11,7 @@ wrap.append(input)
 wrap.append(listFoundRepositories)
 wrap.append(listSelectedRepositories)
 
-let dataRepositories 
+// let dataRepositories 
 
 function createElement(tag, classAdd) {
     const element = document.createElement(tag)
@@ -57,15 +57,15 @@ function repoAddInList(repositories) {
 
 }
 
-function clearInput () {
-    input.removeEventListener('input', inputHandler)
-    input.value = ''
-    input.addEventListener('input', inputHandler)
-}
+// function clearInput () {
+//     input.removeEventListener('input', inputHandler)
+//     input.value = ''
+//     input.addEventListener('input', inputHandler)
+// }
 
 
 listFoundRepositories.addEventListener('click', (event) => {
-    clearInput ()
+    listFoundRepositories.innerHTML = ''
     if(event.target.closest('.repo')){
         const clickItem = event.target
         const repoName = clickItem.textContent
