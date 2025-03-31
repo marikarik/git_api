@@ -26,11 +26,12 @@ async function searchRepo(query) {
     try {
     const response = await fetch(`https://api.github.com/search/repositories?q=${query}`)
     if(!response.ok) {
-        throw new Error (`${response.status}`)
+        throw new Error (`HTTP error! Status: " + ${response.status}`)
     }
-        const responseJson = await response.json()
+    const responseJson = await response.json()
         dataRepositories = responseJson.items.slice(0, 5)
         return responseJson.items.slice(0, 5)
+    
     }
     catch(err) {
         console.log(err);
