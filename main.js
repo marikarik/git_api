@@ -33,7 +33,7 @@ async function searchRepo(query) {
         return responseJson.items.slice(0, 5)
     }
     catch(err) {
-        console.error(err);
+        console.log(err);
     }
 
 }
