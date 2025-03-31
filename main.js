@@ -25,17 +25,15 @@ async function searchRepo(query) {
     if(query.length === 0 || query.trim().length === 0) return
     try {
     const response = await fetch(`https://api.github.com/search/repositories?q=${query}`)
-    const responseJson = await response.json()
-    if(responseJson.items.length < 5){
-        dataRepositories = responseJson.items
-        return responseJson.items
-    } else {
+    if(!response.ok) {
+        throw new Error (`${response.status}`)
+    }
+        const responseJson = await response.json()
         dataRepositories = responseJson.items.slice(0, 5)
         return responseJson.items.slice(0, 5)
     }
-    }
     catch(err) {
-        console.log(err);
+        console.error(err);
     }
 
 }
@@ -56,13 +54,6 @@ function repoAddInList(repositories) {
     });
 
 }
-
-// function clearInput () {
-//     input.removeEventListener('input', inputHandler)
-//     input.value = ''
-//     input.addEventListener('input', inputHandler)
-// }
-
 
 listFoundRepositories.addEventListener('click', (event) => {
     input.value = ''
